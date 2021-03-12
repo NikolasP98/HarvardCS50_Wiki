@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+	Edit entry
+{% endblock %}
+
+{% block body %}
+	<h1>You are editing: <strong>{{name}}</strong></h1>
+	</br>
+	<form action="{%url 'wiki:edit' name %}" method="POST">
+		<div class="form-group">
+			{% csrf_token %}
+			{{form}}
+			<input class="btn btn-primary form-control" type="submit" value="Save Page">
+		</div>
+	</form>
+	<a href="{%url 'wiki:delete' name%}" style="color: red;">Delete Permanently</a>
+{% endblock %}

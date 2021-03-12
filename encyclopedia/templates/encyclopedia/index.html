@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+  Encyclopedia
+{%endblock %}
+
+{% block body %}
+
+{% if entries %}
+<h1>All Pages</h1>
+{% endif %}
+
+<ul>
+  {% for entry in entries %}
+
+  <li> <a href="/wiki/{{entry}}">{{ entry }}</a></li>
+
+  {% empty %}
+
+  <h1>Uh-oh!</h1>
+  </br>
+  <h2>There aren't any pages yet!</h2>
+  <h4>To create one, <a href="{%url 'wiki:create'%}">click here!</a></h4>
+
+  {% endfor %}
+</ul>
+
+{% endblock %}
